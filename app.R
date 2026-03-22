@@ -8,7 +8,18 @@ ui <- page_navbar(
   # App title ----
   title = "Logistics Company",
   sidebar = sidebar(
+    width = "400px",
     h4("General Information"),
+    card(
+      class = "p-2 mb-2 bg-primary text-white",
+      strong("Average Detention Time"),
+      div(textOutput("avgDetentionValue"), class = "fs-5 fw-bold")
+    ),
+    card(
+      class = "p-2 mb-2 bg-danger text-white",
+      strong("Max Detention Time"),
+      div(textOutput("maxDetention"), class = "fs-5 fw-bold")
+    ),
     p(strong("Most Popular State:"), textOutput("topState", inline = TRUE)),
     p(strong("Most Popular City:"), textOutput("topCity", inline = TRUE)),
     p(strong("Most Popular Delivery Type:"), textOutput("topDeliveryType", inline = TRUE)),
@@ -16,27 +27,27 @@ ui <- page_navbar(
   ),
   nav_panel(
     title = "Detention Statistics",
-    layout_columns(
-      col_widths = c(6, 6),  # 50% / 50%
-      
-      value_box(
-        title = "Average Detention Time",
-        value = div(
-          textOutput("avgDetentionValue"),
-          style = "font-size: 1.5rem; font-weight: bold;"
-        ),
-        theme = "primary"
-      ),
-      
-      value_box(
-        title = "Max Detention Time",
-        value = div(
-          textOutput("maxDetention"),
-          style = "font-size: 1.5rem; font-weight: bold;"
-        ),
-        theme = "danger"
-      )
-    ),
+    # layout_columns(
+    #   col_widths = c(6, 6),  # 50% / 50%
+    #   
+    #   value_box(
+    #     title = "Average Detention Time",
+    #     value = div(
+    #       textOutput("avgDetentionValue"),
+    #       # style = "font-size: 1.25rem; font-weight: bold;margin: 0px; "
+    #     ),
+    #     theme = "primary",
+    #   ),
+    #   
+    #   value_box(
+    #     title = "Max Detention Time",
+    #     value = div(
+    #       textOutput("maxDetention"),
+    #       # style = "font-size: 1.25rem; font-weight: bold; margin: 0px;"
+    #     ),
+    #     theme = "danger"
+    #   )
+    # ),
     card(
       plotOutput(outputId = "hist"),  
     ),
