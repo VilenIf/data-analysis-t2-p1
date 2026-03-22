@@ -1,6 +1,7 @@
 library(shiny)
 library(bslib)
 library(DT)
+library(rsconnect)
 
 # Define UI for app that draws a histogram ----
 ui <- page_navbar(
